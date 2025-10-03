@@ -1,11 +1,37 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skill Tracker</title>
+    <title>SkillUp - record your journey</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <h1>Reputation</h1>
+    <header class="landing-header">
+        <h1>SkillUp</h1>
+        <ul class="nav-links">
+            <li>About</li>
+            <li>Pricing</li>
+            <li>Features</li>
+        </ul>
+
+        <button class="started">Get Started</button>
+    </header>
+    <section class="landing-hero">
+        <p class="landing-subtitle">ELEVATE YOUR CAREER</p>
+        <h2 class="landing-title">
+            Master Your <span class="highlight">Growth.</span><br>
+            Track Every Skill.
+        </h2>
+        <p class="landing-desc">
+            SkillUp provides the definitive platform for logging, visualizing, and analyzing your<br>
+            professional and personal development. Stop guessing, start growing.
+        </p>
+        <div class="landing-actions">
+            <a href="{% url 'signup' %}"><button class="landing-btn primary">Get Started – It's Free</button>
+            <a href="{% url 'login' %}"><button class="landing-btn secondary">Log in</button></a>
+        </div>
+    </section>
 </body>
 </html>

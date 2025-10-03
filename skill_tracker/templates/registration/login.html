@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillUp - Login</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="login-bg">
+    <div class="login-form-container">
+        <h1 class="login-title">SkillUp</h1>
+        <p class="login-subtitle">Welcome back! Log in to continue your journey.</p>
+        <div class="login-divider"></div>
+        <form method="post" class="login-form-fields">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+        <a href="{% url 'password_reset' %}" class="login-forgot">Forgot password?</a>
+        <div class="login-footer">
+            <span>New to SkillUp?</span>
+            <a href="" class="login-register">Create an account</a>
+        </div>
+    </div>
+</body>
+</html>

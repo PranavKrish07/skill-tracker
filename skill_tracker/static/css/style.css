@@ -1,0 +1,332 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #18192a;
+
+}
+
+.landing-header {
+    background-image:  linear-gradient(40deg, rgb(43, 12, 72) 40%, #a770ef 100%);
+    color: white;
+    padding: 20px 0;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 25%;
+}
+
+
+
+h1 {
+    margin: 0;
+    font-size: 27px;
+    color: rgb(167, 80, 249);
+    }
+
+.nav-links {
+    display: flex;
+    color: aliceblue;
+    list-style-type: none;
+    gap: 50px;
+    font-size: 20px;
+    margin: 0;
+    padding: 10px;
+
+}
+
+.nav-links li {
+    transition: color 0.2s;
+}
+
+.nav-links li:hover {
+    color: rgb(204, 130, 238);
+    cursor: pointer;
+}
+
+.started {
+    transition: transform 0.3s ease-in-out;
+    background-color: blueviolet;
+    border-color: blueviolet;
+    border-width: 3px;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 20px;
+}
+
+.started:hover {
+    cursor: pointer;
+    transform: scale(1.065);
+
+}
+
+/* Landing Hero Section */
+.landing-hero {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 20px 40px 20px;
+}
+
+.landing-subtitle {
+    color: #7d26cd;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+    font-size: 1.1rem;
+}
+
+.landing-title {
+    font-size: 5.3rem;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 18px 0;
+    line-height: 1.1;
+}
+
+.landing-title .highlight {
+    color: #a770ef;
+}
+
+.landing-desc {
+    color: #bdbde6;
+    font-size: 1.30rem;
+    margin-bottom: 40px;
+    max-width: 700px;
+}
+
+.landing-actions {
+    display: flex;
+    gap: 28px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.landing-btn {
+    font-size: 1.15rem;
+    font-weight: 600;
+    padding: 16px 38px;
+    border-radius: 18px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: transform 0.18s, box-shadow 0.18s;
+    box-shadow: 0 8px 32px 0 rgba(127, 63, 191, 0.18);
+}
+
+.landing-btn.primary {
+    background: linear-gradient(90deg, #7d26cd 40%, #a770ef 100%);
+    color: #fff;
+    box-shadow: 0 4px 24px 0 rgba(127, 63, 191, 0.22);
+}
+
+.landing-btn.primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 32px 0 rgba(127, 63, 191, 0.32);
+}
+
+.landing-btn.secondary {
+    background: #23234a;
+    color: #fff;
+}
+
+.landing-btn.secondary:hover {
+    background: #2e2e5e;
+    transform: scale(1.05);
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.landing-hero .landing-subtitle,
+.landing-hero .landing-title,
+.landing-hero .landing-desc,
+.landing-hero .landing-actions {
+    opacity: 0;
+    animation: fadeInUp 0.8s forwards;
+}
+
+.landing-hero .landing-subtitle {
+    animation-delay: 0.1s;
+}
+.landing-hero .landing-title {
+    animation-delay: 0.3s;
+}
+.landing-hero .landing-desc {
+    animation-delay: 0.5s;
+}
+.landing-hero .landing-actions {
+    animation-delay: 0.7s;
+}
+
+/* login stuff */
+.login-bg {
+            min-height: 100vh;
+            background: #18192a;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+.login-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #a770ef;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        /* Subtitle */
+        .login-subtitle {
+            color: #eaeafc;
+            font-size: 1.2rem;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        /* Login Form Container */
+        .login-form-container {
+            background: rgba(44, 20, 72, 0.92);
+            padding: 38px 32px 28px 32px;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px 0 rgba(127, 63, 191, 0.18);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 320px;
+            max-width: 90vw;
+        }
+
+        /* Divider */
+        .login-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #7d26cd, transparent);
+            margin: 20px 0;
+        }
+
+        /* Form fields */
+        .login-form-container .login-form-fields p {
+            margin: 18px 0;
+            color: #eaeafc;
+            font-size: 1.15rem;
+        }
+
+        .login-form-container label {
+            color: #a770ef;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .login-form-container input[type="text"],
+        .login-form-container input[type="password"] {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid #a770ef;
+            background: #23234a;
+            color: #fff;
+            font-size: 1.08rem;
+            margin-top: 4px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: border 0.2s;
+        }
+
+        .login-form-container input[type="text"]:focus,
+        .login-form-container input[type="password"]:focus {
+            border: 1.5px solid #7d26cd;
+        }
+
+        /* Login Button */
+        .login-btn {
+            width: 100%;
+            background: linear-gradient(90deg, #7d26cd 40%, #a770ef 100%);
+            color: #fff;
+            font-size: 1.18rem;
+            font-weight: 700;
+            padding: 12px 0;
+            border: none;
+            border-radius: 10px;
+            margin-top: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 24px 0 rgba(127, 63, 191, 0.22);
+            transition: transform 0.18s, box-shadow 0.18s;
+        }
+
+        .login-btn:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 32px 0 rgba(127, 63, 191, 0.32);
+        }
+
+        /* Forgot password link */
+        .login-forgot {
+            color: #a770ef;
+            font-size: 0.9rem;
+            margin-top: 12px;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .login-forgot:hover {
+            color: #7d26cd;
+        }
+
+        .login-footer {
+            margin-top: 16px;
+            color: #eaeafc;
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .login-register {
+            color: #a770ef;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .login-register:hover {
+            color: #7d26cd;
+        }
+
+        /* Responsive */
+        @media (max-width: 500px) {
+            .login-title {
+                font-size: 2rem;
+                margin-bottom: 12px;
+            }
+            .login-subtitle {
+                font-size: 1rem;
+                margin-bottom: 18px;
+            }
+            .login-form-container {
+                padding: 18px 8px 16px 8px;
+                min-width: 0;
+            }
+            .login-btn {
+                font-size: 1rem;
+                padding: 10px 0;
+            }
+        }
+        /* SkillUp Title */
+        
+
+
