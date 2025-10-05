@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillUp - Home</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    
+    {% if user.is_authenticated %}
+    <header class="landing-header" style="gap:85%;">
+        <h1>SkillUp</h1>
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %} 
+            <button type="submit" class="started">logout</button>
+        </form>
+    </header>
+    <section>
+        <p class="landing-title">Welcome, {{ user.username }} </p>
+    </section>
+    {% else %}
+    <header class="landing-header" style="gap:85%;">
+        <h1>SkillUp</h1>
+    </header>
+    <section>
+        <p class="landing-title"> You are not logged in </p>
+    </section>
+    {% endif %}
+</body>
+</html>
