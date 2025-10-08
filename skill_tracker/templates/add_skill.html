@@ -1,0 +1,13 @@
+{% extends "home.html" %}
+{% load static %}
+{% block title %}SkillUp - Add Skill{% endblock title %}
+{% block content %}
+<section class="form-section">
+    <h2 class="form-title">Add a New Skill</h2>
+    <form method="post" class="skill-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="submit-button">Add Skill</button>
+        </form>
+</section>
+{% endblock content %}

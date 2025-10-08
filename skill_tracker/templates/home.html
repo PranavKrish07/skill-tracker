@@ -4,11 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillUp - Home</title>
+    <title>{% block title %}SkillUp - Home{% endblock title %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    
     {% if user.is_authenticated %}
     <header class="landing-header" style="gap:85%;">
         <h1>SkillUp</h1>
@@ -17,15 +16,31 @@
             <button type="submit" class="started">logout</button>
         </form>
     </header>
-    <section>
+    {% block content %}
+    <section class="welcome-section">
         <p class="landing-title">Welcome, {{ user.username }} </p>
+        <div class="skill-adding">
+        <a href="/addskill/"><button class="started">Add skill</button></a>
+        </div>
     </section>
+    <section class="skills-section">
+    {% for skill in skills %}
+        <div class="skill-card">
+            <h3>{{ skill.name }}</h3>
+           <label for="progress">Progress: </label><progress value="40" max="100"></progress><br>
+            <a href="/{{ skill.name }}/"><button class="open-button" type="submit">Open</button></a>
+        </div>
+    {% endfor %}
+    </section>
+    {% endblock content %}
     {% else %}
     <header class="landing-header" style="gap:85%;">
         <h1>SkillUp</h1>
+        <a href="/login/"><button class="started">login</button></a>
+
     </header>
     <section>
-        <p class="landing-title"> You are not logged in </p>
+        <p class="landing-title" style="text-align: center;"> You are not logged in </p>
     </section>
     {% endif %}
 </body>

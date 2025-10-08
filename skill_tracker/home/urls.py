@@ -5,4 +5,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('signup/', views.signUpView.as_view(), name='signup'),
     path('home/', views.home, name='home'),
+    path('addskill/', views.addSkill, name='addskill'),
+    path('<str:sk>/', views.skills, name='skills'),
 ]
