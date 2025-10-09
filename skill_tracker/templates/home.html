@@ -27,7 +27,6 @@
     {% for skill in skills %}
         <div class="skill-card fade-in-up" style="animation-delay:0.3s;">
             <h3>{{ skill.name }}</h3>
-           <label for="progress">Progress: </label><progress value="40" max="100"></progress><br>
             <a href="/{{ skill.name }}/"><button class="open-button" type="submit">Open</button></a>
         </div>
     {% endfor %}

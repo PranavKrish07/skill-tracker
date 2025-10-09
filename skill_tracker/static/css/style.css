@@ -588,3 +588,16 @@ h1 {
     transform: scale(1.04);
     box-shadow: 0 6px 24px 0 rgba(127, 63, 191, 0.28);
 }
+
+.check-list h3{
+    color: #d8bbff;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.check-list ul {
+    font-size: 1.1rem;
+    color: #d8bbff;
+}
