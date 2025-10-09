@@ -1,8 +1,33 @@
 {% extends 'home.html' %}
 {% load static %}
-{% block title %}SkillUp - Python{% endblock title %}
+{% block title %}SkillUp - SkillOverview{% endblock title %}
 {% block content %}
-<section>
-    <h1>{{skill.name}}</h1>
+<section class="skill-overview-card">
+    <a href="/home/">← Back to Dashboard</a>
+    <h2 class="skill-heading">{{skill.name}}</h2>
+    {% if skill.description %}
+    <p class="skill-description"><b>description:</b> {{ skill.description }}</p>
+    {% endif %}
+    <p class="mastery">{{completed_count}} completed</p>
+    <progress value="{{completed_count}}" max="{{total_count}}"></progress>
+    <div class="checkpoint-division">
+        <div class="check-list">
+            <h3>Checkpoints</h3>
+            {% for checkpoint in checkpoints %}
+            <ul>
+                <li>{{checkpoint.name}}</li>
+            </ul>
+            {% endfor %}
+        </div>
+        <div class="add-checkpoint">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Add</button>
+            </form>
+        </div>
+
+    </div>
+    
 </section>
 {% endblock content %}

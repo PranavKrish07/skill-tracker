@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* --- Skill Detail Specific Styles --- */
+
+.skill-detail-main {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.skill-overview-card {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.skill-title {
+    font-size: 2.5em;
+    color: var(--light-purple);
+    margin-top: 10px;
+}
+
+.skill-description {
+    color: var(--light-text);
+    font-size: 1.1em;
+    border-bottom: 1px solid rgba(var(--light-text), 0.1);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.back-link {
+    font-size: 0.9em;
+    color: var(--light-text);
+}
+
+.section-title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: white;
+}
+
+/* --- Checkpoint Area Grid (Two Columns) --- */
+.checkpoint-area-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* 2/3rds for list, 1/3rd for form */
+    gap: 30px;
+}
+
+.checkpoint-list-card,
+.add-checkpoint-card {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+/* --- Checkpoint List Items --- */
+.checkpoint-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(var(--light-text), 0.1);
+    transition: background-color 0.2s;
+}
+
+.checkpoint-item:last-child {
+    border-bottom: none;
+}
+
+.checkpoint-item label {
+    font-size: 1.1em;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.checkpoint-item.completed label {
+    color: var(--light-text);
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+/* --- Add Checkpoint Form Styles (to make form fields look good) --- */
+.checkpoint-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    font-size: 1em;
+}
+
+.submit-btn {
+    width: 100%;
+}
+
+/* --- Large Progress Bar --- */
+.large-progress-section {
+    padding: 20px 0;
+}
+
+.progress-label-lg {
+    display: block;
+    text-align: right;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--light-purple);
+    margin-bottom: 10px;
+}
+
+.large-progress-bar-container {
+    background: #444;
+    border-radius: 50px;
+    height: 20px; /* Thicker bar */
+    overflow: hidden;
+}
+
+.large-progress-bar-fill {
+    background: linear-gradient(90deg, #7d26cd 0%, #a770ef 100%);
+    height: 100%;
+    width: 0%; 
+    border-radius: 50px;
+    transition: width 0.5s ease-in-out;
+}
+    </style>
+</head>
+<body>
+<main class="skill-detail-main">
+    
+    <div class="skill-overview-card">
+        <a href="" class="back-link">← Back to Dashboard</a>
+        
+        <h1 class="skill-title">skill name</h1>
+            <p class="skill-description">{{ skill.description }}</p>
+
+        <div class="large-progress-section">
+            <span class="progress-label-lg">{{ progress_percent }}% Mastered</span>
+            <div class="large-progress-bar-container">
+                <div class="large-progress-bar-fill" style="width: {{ progress_percent }}%;"></div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="checkpoint-area-grid">
+        
+        <section class="checkpoint-list-card">
+            <h2 class="section-title">Checkpoints ({{ skill.checkpoints.count }})</h2>
+            
+            
+            <div class="checkpoint-item {% if checkpoint.is_completed %}completed{% endif %}">
+                <input type="checkbox" id="check-{{ checkpoint.pk }}" 
+                       {% if checkpoint.is_completed %}checked{% endif %} disabled> 
+                
+                <label for="check-{{ checkpoint.pk }}">{{ checkpoint.title }}</label>
+            </div>
+            <p class="empty-state-message">This skill has no checkpoints yet. Add one to start tracking!</p>
+            {% endfor %}
+        </section>
+
+        <section class="add-checkpoint-card">
+            <h2 class="section-title">Add New Checkpoint</h2>
+            
+            <form method="post" action="{% url 'skill_detail' skill.pk %}" class="checkpoint-form">
+                {% csrf_token %}
+                
+                <div class="form-field">
+                    {{ form.title.label_tag }}
+                    {{ form.title }}
+                </div>
+                
+                <button type="submit" class="button-primary submit-btn">Save Checkpoint</button>
+            </form>
+        </section>
+
+    </div>
+</main>
+</body>
+</html>

@@ -17,15 +17,15 @@
         </form>
     </header>
     {% block content %}
-    <section class="welcome-section">
+    <section class="welcome-section fade-in-up" style="animation-delay:0.2s;">
         <p class="landing-title">Welcome, {{ user.username }} </p>
         <div class="skill-adding">
         <a href="/addskill/"><button class="started">Add skill</button></a>
         </div>
     </section>
-    <section class="skills-section">
+    <section class="skills-section fade-in-up" style="animation-delay:0.3s;">
     {% for skill in skills %}
-        <div class="skill-card">
+        <div class="skill-card fade-in-up" style="animation-delay:0.3s;">
             <h3>{{ skill.name }}</h3>
            <label for="progress">Progress: </label><progress value="40" max="100"></progress><br>
             <a href="/{{ skill.name }}/"><button class="open-button" type="submit">Open</button></a>
@@ -37,9 +37,8 @@
     <header class="landing-header" style="gap:85%;">
         <h1>SkillUp</h1>
         <a href="/login/"><button class="started">login</button></a>
-
     </header>
-    <section>
+    <section class="fade-in-up" style="animation-delay:0.2s;">
         <p class="landing-title" style="text-align: center;"> You are not logged in </p>
     </section>
     {% endif %}
