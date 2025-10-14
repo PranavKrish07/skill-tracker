@@ -15,7 +15,10 @@ class signUpView(generic.CreateView):
     template_name = 'registration/signup.html'
 
 def home(request):
-    skills = Skill.objects.filter(user=request.user)
+    if request.user.is_authenticated:
+        skills = Skill.objects.filter(user=request.user)
+    else:
+        skills = []
     return render(request, 'home.html', {'skills': skills})
 
 @login_required
