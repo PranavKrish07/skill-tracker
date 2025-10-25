@@ -9,4 +9,9 @@ class SkillForm(forms.ModelForm):
 class CheckpointForm(forms.ModelForm):
     class Meta:
         model = Checkpoint
-        fields = ['name', 'completed']
+        fields = ['name']
+
+class CheckListForm(forms.ModelForm):
+    class Meta:
+        model = Checkpoint
+        fields = ['completed']

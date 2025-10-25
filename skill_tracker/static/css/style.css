@@ -601,3 +601,8 @@ h1 {
     font-size: 1.1rem;
     color: #d8bbff;
 }
+
+.checkpoints li {
+    margin-bottom: 8px;
+    list-style-type: none ;
+}

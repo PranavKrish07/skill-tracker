@@ -12,7 +12,7 @@ class Skill(models.Model):
 
 class Checkpoint(models.Model):
     skill = models.ForeignKey(Skill, related_name='checkpoints', on_delete=models.CASCADE)
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, blank=True)
     completed = models.BooleanField(default=False)
 
     def __str__(self):

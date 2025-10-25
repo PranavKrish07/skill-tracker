@@ -5,6 +5,9 @@ from django.urls import reverse_lazy
 from django.views import generic
 from .forms import SkillForm, CheckpointForm
 from .models import Skill, Checkpoint
+from django.forms import modelformset_factory
+
+checkformset = modelformset_factory(Checkpoint, fields=('completed',), extra=0)
 
 def index(request):
     return render(request, 'index.html')
@@ -41,14 +44,33 @@ def skills(request, sk):
     checkpoints = Checkpoint.objects.filter(skill=skill)
     total_count = checkpoints.count()
     completed_count = checkpoints.filter(completed=True).count()
+
+    # default forms for GET
+    form = CheckpointForm()
+    formset = checkformset(queryset=checkpoints)
+
     if request.method == 'POST':
-        form = CheckpointForm(request.POST)
-        if form.is_valid():
-            new_checkpoint = form.save(commit=False)
-            new_checkpoint.user = request.user
-            new_checkpoint.skill = skill  
-            new_checkpoint.save()
-            return redirect("skills", sk=sk)
-    else:
-        form = CheckpointForm()
-    return render(request, 'openskill.html', {'skill': skill, "checkpoints": checkpoints, "form": form, "total_count": total_count, "completed_count": completed_count})
+        action = request.POST.get('action')
+        if action == 'add_checkpoint':
+            form = CheckpointForm(request.POST)
+            if form.is_valid():
+                new_checkpoint = form.save(commit=False)
+                # checkpoint has no user field; just attach skill
+                new_checkpoint.skill = skill
+                new_checkpoint.save()
+                return redirect("skills", sk=sk)
+        elif action == 'update_checkpoints':
+            formset = checkformset(request.POST, queryset=checkpoints)
+            if formset.is_valid():
+                formset.save()
+                return redirect("skills", sk=sk)
+        # if invalid, fall through to re-render with errors
+
+    return render(request, 'openskill.html', {
+        'skill': skill,
+        'checkpoints': checkpoints,
+        'form': form,
+        'total_count': total_count,
+        'completed_count': completed_count,
+        'formset': formset
+    })
