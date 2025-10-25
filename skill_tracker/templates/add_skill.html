@@ -7,7 +7,9 @@
     <form method="post" class="skill-form">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="submit-button">Add Skill</button>
-        </form>
+        <div class="button-group">
+            <button type="submit" class="submit-button">Add Skill</button>
+        </div>
+    </form>
 </section>
 {% endblock content %}

@@ -3,7 +3,14 @@
 {% block title %}SkillUp - SkillOverview{% endblock title %}
 {% block content %}
 <section class="skill-overview-card">
-    <a href="/home/">← Back to Dashboard</a>
+    <div class="skill-header">
+        <div class="header-nav">
+            <a href="/home/">← Back to Dashboard</a>
+        </div>
+        <div class="header-actions">
+            <a href="/{{ skill.name }}/delete/" class="delete-btn">Delete Skill</a>
+        </div>
+    </div>
     <h2 class="skill-heading">{{skill.name}}</h2>
     {% if skill.description %}
     <p class="skill-description"><b>description:</b> {{ skill.description }}</p>
