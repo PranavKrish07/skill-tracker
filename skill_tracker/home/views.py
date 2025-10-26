@@ -44,7 +44,8 @@ def skills(request, sk):
     checkpoints = Checkpoint.objects.filter(skill=skill)
     total_count = checkpoints.count()
     completed_count = checkpoints.filter(completed=True).count()
-    #forms
+
+    # default forms for GET
     form = CheckpointForm()
     formset = checkformset(queryset=checkpoints)
 
@@ -54,6 +55,7 @@ def skills(request, sk):
             form = CheckpointForm(request.POST)
             if form.is_valid():
                 new_checkpoint = form.save(commit=False)
+                # checkpoint has no user field; just attach skill
                 new_checkpoint.skill = skill
                 new_checkpoint.save()
                 return redirect("skills", sk=sk)
@@ -62,6 +64,7 @@ def skills(request, sk):
             if formset.is_valid():
                 formset.save()
                 return redirect("skills", sk=sk)
+        # if invalid, fall through to re-render with errors
 
     return render(request, 'openskill.html', {
         'skill': skill,
@@ -71,11 +74,3 @@ def skills(request, sk):
         'completed_count': completed_count,
         'formset': formset
     })
-
-@login_required  # Add this decorator
-def deleteSkill(request, sk):
-    skill = get_object_or_404(Skill, name=sk, user=request.user)
-    if request.method == 'POST':
-        skill.delete()
-        return redirect('home')
-    return render(request, 'delete_skill.html', {'skill': skill})
