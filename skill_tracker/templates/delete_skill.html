@@ -1,0 +1,20 @@
+{% extends "home.html" %}
+{% load static %}
+{% block title %}SkillUp - Delete Skill{% endblock title %}
+    {% block content %}
+    <section class="delete-confirmation">
+        <div class="delete-card">
+            <h2>Delete Skill</h2>
+            <p>Are you sure you want to delete "{{ skill.name }}"?</p>
+            <p class="warning">This action cannot be undone. All checkpoints associated with this skill will also be deleted.</p>
+            
+            <div class="button-group">
+                <form method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="delete-btn">Delete Skill</button>
+                </form>
+                <a href="/{{ skill.name }}/" class="cancel-btn">Cancel</a>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
