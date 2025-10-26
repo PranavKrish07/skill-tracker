@@ -4,12 +4,8 @@
 {% block content %}
 <section class="skill-overview-card">
     <div class="skill-header">
-        <div class="header-nav">
-            <a href="/home/">← Back to Dashboard</a>
-        </div>
-        <div class="header-actions">
-            <a href="/{{ skill.name }}/delete/" class="delete-btn">Delete Skill</a>
-        </div>
+        <a href="/home/">← Back to Dashboard</a>
+        <a href="/{{ skill.name }}/delete/" class="delete-skill-btn">Delete Skill</a>
     </div>
     <h2 class="skill-heading">{{skill.name}}</h2>
     {% if skill.description %}

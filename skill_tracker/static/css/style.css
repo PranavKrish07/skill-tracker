@@ -3,6 +3,7 @@ body, html {
     padding: 0;
     font-family: 'Inter', sans-serif;
     background-color: #1b0729;
+    color: #a770ef;
 
 }
 
@@ -352,9 +353,8 @@ h1 {
 
 .skill-form {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    max-width: 560px;
+    box-sizing: border-box;
 }
 
 .skill-form label {
@@ -620,35 +620,24 @@ h1 {
 }
 
 .delete-card {
-    background: rgba(44, 20, 72, 0.92);
-    padding: 2.5rem;
-    border-radius: 18px;
-    box-shadow: 0 8px 32px 0 rgba(127, 63, 191, 0.18);
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     max-width: 500px;
     width: 90%;
     text-align: center;
 }
 
 .delete-card h2 {
-    color: #a770ef;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    font-weight: 700;
-}
-
-.delete-card p {
-    color: #eaeafc;
-    font-size: 1.1rem;
+    color: #333;
     margin-bottom: 1rem;
 }
 
 .warning {
-    color: #ff4081;
-    font-size: 0.95rem;
-    margin: 1.2rem 0;
-    padding: 12px;
-    background: rgba(255, 64, 129, 0.1);
-    border-radius: 8px;
+    color: #dc2626;
+    font-size: 0.9rem;
+    margin: 1rem 0;
 }
 
 .button-group {
@@ -659,47 +648,30 @@ h1 {
 }
 
 .delete-btn {
-    background: linear-gradient(135deg, #ff4081 0%, #c51162 100%);
+    background: #dc2626;
     color: white;
     border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1rem;
-    box-shadow: 0 6px 18px rgba(197, 17, 98, 0.22);
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
     cursor: pointer;
-    transition: transform .12s ease, box-shadow .12s ease;
+    transition: background-color 0.2s;
 }
 
 .delete-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 26px rgba(197, 17, 98, 0.28);
-}
-
-.delete-btn:active {
-    transform: translateY(0);
-    opacity: 0.96;
-    box-shadow: 0 6px 14px rgba(197, 17, 98, 0.20);
+    background: #b91c1c;
 }
 
 .cancel-btn {
-    background: rgba(234, 234, 252, 0.1);
-    color: #eaeafc;
+    background: #e5e7eb;
+    color: #374151;
     text-decoration: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: all 0.2s ease;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    transition: background-color 0.2s;
 }
 
 .cancel-btn:hover {
-    background: rgba(234, 234, 252, 0.15);
-    transform: translateY(-3px);
-}
-
-.cancel-btn:active {
-    transform: translateY(0);
+    background: #d1d5db;
 }
 
 .skill-header {
@@ -707,21 +679,71 @@ h1 {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1.5rem;
-    width: 100%;
 }
 
-.header-nav {
-    display: flex;
-    align-items: center;
-}
-
-.header-actions {
-    display: flex;
-    align-items: center;
-}
-
-.skill-header .delete-btn {
+.delete-skill-btn {
+    background: linear-gradient(135deg, #ff4081 0%, #c51162 100%);
+    color: white;
     text-decoration: none;
     padding: 8px 16px;
-    font-size: 0.95rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 4px 14px rgba(197, 17, 98, 0.22);
+    transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.delete-skill-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(197, 17, 98, 0.28);
+}
+
+.delete-skill-btn:active {
+    transform: translateY(0);
+    opacity: 0.96;
+    box-shadow: 0 4px 12px rgba(197, 17, 98, 0.20);
+}
+
+/* Violet-themed Add Skill button (proportional to form) */
+.skill-form {
+    width: 100%;
+    max-width: 560px;
+    box-sizing: border-box;
+}
+
+.skill-form .button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 1rem;
+}
+
+.submit-button {
+    min-width: 140px;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #6a11cb 0%, #a770ef 60%, #c084fc 100%);
+    border: none;
+    box-shadow: 0 8px 26px rgba(106,17,203,0.18);
+    cursor: pointer;
+    transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+}
+
+.submit-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 34px rgba(106,17,203,0.26);
+}
+
+.submit-button:active {
+    transform: translateY(0);
+    opacity: 0.96;
+    box-shadow: 0 6px 16px rgba(106,17,203,0.16);
+}
+
+/* Responsive: button becomes full-width on small screens */
+@media (max-width: 600px) {
+    .skill-form .button-group { justify-content: center; }
+    .submit-button { width: 100%; min-width: 0; }
 }
