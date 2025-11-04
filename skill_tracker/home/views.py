@@ -72,7 +72,7 @@ def skills(request, sk):
         'formset': formset
     })
 
-@login_required  # Add this decorator
+@login_required
 def deleteSkill(request, sk):
     skill = get_object_or_404(Skill, name=sk, user=request.user)
     if request.method == 'POST':

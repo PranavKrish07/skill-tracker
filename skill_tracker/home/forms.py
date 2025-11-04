@@ -15,3 +15,8 @@ class CheckListForm(forms.ModelForm):
     class Meta:
         model = Checkpoint
         fields = ['completed']
+        widgets = {
+            'completed':forms.CheckboxInput(attrs={
+                'id': 'auto-submit-checkbox'
+            })
+        }

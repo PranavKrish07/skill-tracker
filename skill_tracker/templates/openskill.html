@@ -16,7 +16,7 @@
     <div class="checkpoint-division">
         <div class="check-list">
             <h3>Checkpoints</h3>
-            <form method="POST">
+            <form method="POST" id="checkpoints-form">
                 {% csrf_token %}
                 {{formset.management_form}}
                 <ul class="checkpoints">
@@ -27,7 +27,7 @@
                     </li>
                     {% endfor %}
                 </ul>
-                <button type="submit" class="started" name="action" value="update_checkpoints">update</button>
+                <input type="hidden" name="action" value="update_checkpoints">
             </form>
         </div>
         <div class="add-checkpoint">
@@ -40,4 +40,16 @@
     </div>
     
 </section>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('checkpoints-form');
+    const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+    
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            form.submit();
+        });
+    });
+});
+</script>
 {% endblock content %}
