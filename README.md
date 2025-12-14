@@ -1,10 +1,10 @@
-SkillUp - Master Your Growth
+#SkillUp - Master Your Growth
 SkillUp is a definitive platform for logging, visualizing, and analyzing professional and personal development. It moves beyond simple to-do lists by allowing users to track progress through granular checkpoints and visual mastery indicators.
 
-🚀 The Vision
+#🚀 The Vision
 In a world of constant learning, "guessing" your progress isn't enough. SkillUp provides a structured environment to turn abstract learning goals into measurable milestones. Built with a focus on user privacy and practical progress tracking.
 
-🛠️ Tech Stack
+#🛠️ Tech Stack
 Backend: Django (Python)
 
 Database: SQLite3 (Development)
